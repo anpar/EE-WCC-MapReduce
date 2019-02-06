@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from core import *
 from utils import *
 
-# Produces Fig. 3 and Fig. 4.
+# Produces Fig. 3a and 3b
 
 # Number of nodes K
 K = [10 * i for i in range(2, 11)]

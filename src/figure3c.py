@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from core import *
 from utils import *
 
-# Produces Fig. 5
+# Produces Fig. 3c
 
 # Allowed latency \tau [s]
 lat = [0.25 * i for i in range(1, 13)]

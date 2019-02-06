@@ -19,15 +19,15 @@ To generate Figure 2, run the command
 python3 figure2.py
 ```
 
-To generate Figures 3 and 4, run the command
+To generate Figures 3a and 3b, run the command
 ```
-python3 -O figures3and4.py
+python3 -O figures3ab.py
 ```
 (without the ``-O`` flag if you want debug information to appear in your terminal).
 
-To generate Figure 5, run the command
+To generate Figure 3c, run the command
 ```
-python3 -O figure5.py
+python3 -O figure3c.py
 ```
 (without the ``-O`` flag if you want debug information to appear in your terminal).
 
