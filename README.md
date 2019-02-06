@@ -30,3 +30,6 @@ To generate Figure 5, run the command
 python3 -O figure5.py
 ```
 (without the ``-O`` flag if you want debug information to appear in your terminal).
+
+# Contact
+For feedback, comments, bug reports, etc, please contact antoine.paris [at] uclouvain.be.
