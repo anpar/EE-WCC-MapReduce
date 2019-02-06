@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+#from matplotlib2tikz import save as tikz_save
 from core import *
 from utils import *
 
@@ -60,8 +61,8 @@ ax.semilogy(lat, 1-outage_prob_solo[:],
 
 plt.legend(prop={'size': 6})
 plt.ylim([1e-4, 2e0])
-plt.xlabel('\small{Allowed latency \\tau [s]}')
-plt.ylabel('\small{Outage probability P^*_\\text{out}}')
+plt.xlabel('\small{Allowed latency $\\tau$ [s]}')
+plt.ylabel('\small{Outage probability $P^*_{out}$}')
 
-#tikz_save("../../dc-comm/paper/figures/outage_prob.tex")
+#tikz_save("../../dc-comm/paper/figures/outage-prob2.tikz")
 plt.show()

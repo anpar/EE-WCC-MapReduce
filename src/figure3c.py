@@ -58,9 +58,9 @@ ax.semilogy(lat, E_shu_opt, color='orange',
 ax.semilogy(lat, E_red_opt, color='green',
         marker='s', markersize=2, label='\scriptsize{{$E^{{RED}}$}}')
 
-plt.xlabel('\small{Allowed latency \\tau [s]}')
+plt.xlabel('\small{Allowed latency $\\tau$ [s]}')
 plt.ylabel('\small{Energy consumption [J]}')
 ax.legend()
 
-#tikz_save("../../dc-comm/paper/figures/energy_vs_lat.tex")
+#tikz_save("../../dc-comm/paper/figures/energy_vs_lat.tikz")
 plt.show()

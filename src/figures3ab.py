@@ -94,7 +94,7 @@ plt.xlabel('\small{Number of nodes $K$}')
 plt.ylabel('\small{Total energy consumption [J]}')
 ax.legend()
 
-#tikz_save("../../dc-comm/paper/figures/energy_vs_K.tex")
+#tikz_save("../../dc-comm/paper/figures/energy_vs_K.tikz")
 plt.show()
 
 # Plotting and saving the results (Fig. 4)
@@ -126,5 +126,5 @@ plt.xlabel('\small{Number of nodes $K$}')
 plt.ylabel('\small{Energy consumption [J]}')
 ax.legend()
 
-#tikz_save("../../dc-comm/paper/figures/energy_breakdown.tex")
+#tikz_save("../../dc-comm/paper/figures/energy-breakdown.tikz")
 plt.show()
