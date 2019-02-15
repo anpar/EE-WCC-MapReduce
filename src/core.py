@@ -1,7 +1,7 @@
 import numpy as np
 
 from math import sqrt
-from mpmath import lambertw
+from scipy.special import lambertw
 from termcolor import colored
 from numpy.random import uniform, choice, normal
 
@@ -13,7 +13,7 @@ class TaskParam:
         - T: intermediate value size [bits]
         - tau = allowed latency [s]
     """
-    def __init__(self, D=1e3, L=1e9, T=1e4, tau=1):
+    def __init__(self, D=100, L=4e6, T=5e3, tau=1):
         self.D = D
         self.L = L
         self.T = T
@@ -59,7 +59,7 @@ class CommParam:
         - h: K-length vector, h_k is the Rayleigh fading channel from node k
         to the AP
     """
-    def __init__(self, K, B=1e6, N0=1e-9, gap=1, PL=1e-3, homogeneous=False):
+    def __init__(self, K, B=15e3, N0=1e-9, gap=1, PL=1e-3, homogeneous=False):
         self.K = K
 
         self.B = B
@@ -91,7 +91,7 @@ class Problem:
         # compute its Reduce function
         self.tauk = task.tau - self.K * task.D * comp.C/comp.F - \
                 task.T * np.max(comp.C/comp.F)
-        assert np.all(self.tauk > 0), "Effective latency < 0"
+        assert np.all(self.tauk > 0), "Not feasible (effective latency < 0)"
 
     def max_comp_load_opt(self):
         """
@@ -112,8 +112,8 @@ class Problem:
         Returns the maximum achievable computation load in the case
         where the nodes are not collaborating.
         """
-        return (self.task.tau - self.task.D * self.comp.C[0]/self.comp.F[0]) * \
-                self.comp.F[0]/self.comp.C[0]
+        tauk = self.task.tau - self.task.D * self.comp.C/self.comp.F
+        return np.min(self.comp.F/self.comp.C * tauk)
 
     def feasible_opt(self):
         """
@@ -122,12 +122,12 @@ class Problem:
         """
         return self.max_comp_load_opt() > self.task.L
 
-    def feasible_blind(self):
+    def feasible_blind(self, tol=1.0):
         """
         Check if the problem is feasible by the blind scheme by comparing
         the actual load with the maximum achievable load.
         """
-        return self.max_comp_load_blind() > self.task.L
+        return self.max_comp_load_blind() > tol * self.task.L
 
     def feasible_solo(self):
         """

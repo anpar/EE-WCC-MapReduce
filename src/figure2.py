@@ -56,7 +56,7 @@ for (j, k) in enumerate(K):
                 marker='s', linestyle='--', markersize=4)
 
 ax.semilogy(lat, 1-outage_prob_solo[:],
-            label='\\tiny{{$K = 1$ (solo)}}',
+            label='\\tiny{{$K = 10$ (solo)}}',
             marker='v', markersize=3, linestyle=':')
 
 plt.legend(prop={'size': 6})
@@ -64,5 +64,5 @@ plt.ylim([1e-4, 2e0])
 plt.xlabel('\small{Allowed latency $\\tau$ [s]}')
 plt.ylabel('\small{Outage probability $P^*_{out}$}')
 
-#tikz_save("../../dc-comm/paper/figures/outage-prob2.tikz")
+#tikz_save("../../dc-comm/paper/figures/outage-prob.tikz")
 plt.show()

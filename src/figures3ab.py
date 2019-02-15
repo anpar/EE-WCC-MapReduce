@@ -23,30 +23,27 @@ E_map_blind = np.zeros((len(K),))
 E_red_blind = np.zeros((len(K),))
 E_shu_blind = np.zeros((len(K),))
 
-E_solo = np.zeros((len(K),))
-
 # Number of iterations
-n_iter = 1000
+n_iter = 10000
 
 for (i, k) in enumerate(K):
     n = 0
     while n < n_iter:
-        # Note: we're using a quite large allowed latency (i.e. 3.5s)
-        # because we want to compare the energy consumption of the three
-        # different schemes on *feasible* instances of the problem. Hence
-        # we are limited by the scenario where the nodes do not collaborate
-        # which needs a high enough allowed latency to be feasible.
-        task = TaskParam(D=D, L=L, T=T, tau=3.5)
+        # Note: we're using a quite large allowed latency (i.e. 0.8s)
+        # because we want to compare the energy consumption of both schemes
+        # on *feasible* instances of the problem. Hence,
+        # we are limited by the scenario where the nodes collaborate
+        # naively in setting the allowed latency.
+        task = TaskParam(D=D, L=L, T=T, tau=1)
         comp = CompParam(k, homogeneous=False)
         comm = CommParam(k, B=15e3, N0=1e-9, gap=1, PL=1e-3,
                          homogeneous=False)
         problem = Problem(task, comp, comm)
 
         # Only compare energy consumptions when the problem is actually
-        # feasible for all the three schemes.
+        # feasible for both scheme.
         if problem.feasible_opt() and \
-           problem.feasible_blind() and \
-           problem.feasible_solo():
+           problem.feasible_blind(1.02):
 
             # Get energy consumptions for the optimal scheme
             solver = Solver(problem)
@@ -66,13 +63,6 @@ for (i, k) in enumerate(K):
             E_red_blind[i] += np.sum(opt.E_red)/n_iter
             E_shu_blind[i] += np.sum(opt.E_shu)/n_iter
 
-            # Get energy consumption for the scenario where the nodes do not
-            # collaborate
-            l = np.repeat(problem.task.L, k)
-            opt = Solution(problem, l, lamb)
-
-            E_solo[i] += np.sum(opt.E_solo)/n_iter
-
             n += 1
             pprogress(n, n_iter, prefix='K = {:d}\t'.format(k),
                            bar_length=40)
@@ -86,15 +76,12 @@ ax.semilogy(K, E_map_opt + E_red_opt + E_shu_opt, 'g',
 ax.semilogy(K, E_map_blind + E_red_blind + E_shu_blind, 'b',
             label='\\tiny{{Blind scheme}}',
             marker='s', markersize=4, linestyle='--')
-ax.semilogy(K, E_solo, 'r',
-            label='\\tiny{{No collaboration}}',
-            marker='v', markersize=4, linestyle=':')
 
 plt.xlabel('\small{Number of nodes $K$}')
 plt.ylabel('\small{Total energy consumption [J]}')
 ax.legend()
 
-#tikz_save("../../dc-comm/paper/figures/energy_vs_K.tikz")
+#tikz_save("../../dc-comm/paper/figures/tot-energy-vs-nodes.tikz")
 plt.show()
 
 # Plotting and saving the results (Fig. 4)
