@@ -1,3 +1,5 @@
+Source code of the numerical experiments presented in "Energy-Efficient Edge-Facilitated Wireless Collaborative Computing using Map-Reduce" by Antoine Paris, Hamed Mirghasemi, Ivan Stupia and Luc Vandendorpe (submitted at SPAWC19). 
+
 # Requirements
 The code available in this repository was tested with:
 - Python 3.6.7
