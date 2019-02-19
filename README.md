@@ -70,4 +70,4 @@ supported by F.R.S.-FNRS under the EOS program (project 30452698,
 “MUlti-SErvice WIreless NETwork”).
 
 # Contact
-For feedback, comments, bug reports, etc, please contact antoine.paris [at] uclouvain.be.
+For feedback, comments, bug reports, etc, please contact antoine.paris@uclouvain.be.
