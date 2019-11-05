@@ -1,4 +1,19 @@
-Source code of the numerical experiments presented in "[Energy-Efficient Edge-Facilitated Wireless Collaborative Computing using Map-Reduce](https://arxiv.org/abs/1903.02294)" by Antoine Paris, Hamed Mirghasemi, Ivan Stupia and Luc Vandendorpe (to be presented at SPAWC19). 
+Source code of the numerical experiments presented in "[Energy-Efficient Edge-Facilitated Wireless Collaborative Computing using Map-Reduce](https://ieeexplore.ieee.org/document/8815499)" by Antoine Paris, Hamed Mirghasemi, Ivan Stupia and Luc Vandendorpe (presented at 2019 IEEE 20th International Workshop on Signal Processing Advances in Wireless Communications (SPAWC), Cannes, France).
+
+# Citing this work
+```
+@INPROCEEDINGS{8815499,
+  author={A. {Paris} and H. {Mirghasemi} and I. {Stupia} and L. {Vandendorpe}},
+  booktitle={2019 IEEE 20th International Workshop on Signal Processing Advances in Wireless Communications (SPAWC)},
+  title={Energy-Efficient Edge-Facilitated Wireless Collaborative Computing using Map-Reduce},
+  year={2019},
+  volume={},
+  number={},
+  pages={1-5},
+  doi={10.1109/SPAWC.2019.8815499},
+  ISSN={},
+  month={July},}
+```
 
 # Requirements
 The code available in this repository was tested with:
